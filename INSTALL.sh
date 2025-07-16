@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Mensaje de bienvenida
-echo "hello my people welcome to km installer 😄"
+echo "hello my people welcome to km_v2 installer 😄"
 
 # Función para instalar paquetes usando yay
 install_with_yay() {
@@ -61,8 +61,7 @@ backup_and_copy "$HOME/.config/rofi" "./.config/rofi"
 backup_and_copy "$HOME/.config/picom" "./.config/picom"
 backup_and_copy "$HOME/.config/yazi" "./.config/yazi"
 backup_and_copy "$HOME/.config/zellij" "./.config/zellij"
-backup_and_copy "$HOME/.config/neofetch" "./.config/neofetch"
+backup_and_copy "$HOME/.config/fastfetch" "./.config/fastfetch"
 backup_and_copy "$HOME/.config/clipcat" "./.config/clipcat"
-backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
 
 echo "✅ done"
