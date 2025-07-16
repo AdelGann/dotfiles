@@ -1,0 +1,22 @@
+[[plugin.deps]]
+use = "Reledia/glow"
+rev = "5ce76dc"
+hash = "52e5f5c602962e7cbf874da28f52ba45"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "beb586a"
+hash = "f28138c2e11e87962b66d583fef724c3"
+
+[[plugin.deps]]
+use = "GianniBYoung/rsync"
+rev = "3f431aa"
+hash = "1854a5a30d23e84bc8df24700f27957b"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "2496cd9"
+hash = "5b9dea47776a30946cfbf83232d18fb1"
+
+[flavor]
+deps = []

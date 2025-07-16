@@ -6,7 +6,7 @@ import re
 
 __groups = {
     1: Group(
-        "   ",
+        " 1 ",
         layout="max",
         layouts=layouts,
         matches=[
@@ -18,25 +18,25 @@ __groups = {
         ],
     ),
     2: Group(
-        "   ",
+        " 2 ",
         layout="tile",
         layouts=layouts,
         matches=[Match(wm_class=re.compile(r"^(Alacritty|kitty)$"))],
     ),
     3: Group(
-        "   ",
+        " 3 ",
         layout="max",
         layouts=layouts_maxtowide,
         matches=[Match(wm_class=re.compile(r"^(code\-oss|subl|code|Code)$"))],
     ),
     4: Group(
-        " 󱂛 ",
+        " 4 ",
         layout="tile",
         layouts=layouts,
         matches=[Match(wm_class=re.compile(r"^(insomnia|Insomnia|postman|Postman)$"))],
     ),
     5: Group(
-        "   ",
+        " 5 ",
         layout="tile",
         layouts=layouts_maxtowide,
         matches=[
@@ -48,7 +48,7 @@ __groups = {
         ],
     ),
     6: Group(
-        "   ",
+        " 6 ",
         layout="tile",
         layouts=layouts,
         matches=[
@@ -60,13 +60,13 @@ __groups = {
         ],
     ),
     7: Group(
-        " 󰋩  ",
+        " 7 ",
         layout="tile",
         layouts=layouts,
         matches=[Match(wm_class=re.compile(r"^(blender|Inkscape)$"))],
     ),
     8: Group(
-        " 󰊗  ",
+        " 8 ",
         layout="max",
         layouts=layouts,
         matches=[
@@ -74,7 +74,7 @@ __groups = {
         ],
     ),
     9: Group(
-        "   ",
+        " 9 ",
         layout="max",
         layouts=layouts,
         matches=[

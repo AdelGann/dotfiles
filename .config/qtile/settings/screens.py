@@ -11,7 +11,7 @@ import subprocess
 
 def status_bar(widgets):
     return bar.Bar(
-        widgets, 20, background=colors["background"], padding=3, margin=[0, 0, 0, 0]
+        widgets, 30, background=colors["background"], padding=5, margin=3
     )
 
 

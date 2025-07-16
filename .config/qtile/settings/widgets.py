@@ -4,9 +4,9 @@ from .theme import colors
 from libqtile import bar
 from libqtile import qtile
 from qtile_extras.widget.decorations import RectDecoration
+from qtile_extras.popup.templates.mpris2 import COMPACT_LAYOUT, DEFAULT_LAYOUT
 # from qtile_extras.widget import GlobalMenu
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
-
 
 def base(fg="text", bg="background"):
     return {
@@ -57,9 +57,9 @@ decor_groupbox = {
 def workspaces():
     return [
         widget.GroupBox(
-            background="#00000000",
+            #background="#00000000",
             font="FiraCode NF Bold",
-            fontsize=14,
+            fontsize=12,
             margin_y=2,
             margin_x=10,
             padding_y=6,
@@ -67,7 +67,7 @@ def workspaces():
             borderwidth=1,
             active=colors["active"],
             inactive=colors["inactive"],
-            rounded=False,
+            rounded=True,
             highlight_method="text",
             urgent_alert_method="text",
             urgent_border=colors["urgent"],
@@ -76,7 +76,7 @@ def workspaces():
             other_current_screen_border=colors["focus"],
             other_screen_border=colors["background"],
             disable_drag=True,
-            **decor_groupbox,
+            #**decor_groupbox,
         ),
     ]
 
@@ -99,77 +99,119 @@ primary_widgets = [
     #     progs=[("rofy", "rofi -show drun")],
     #     padding=3,
     # ),
-    spacer(length=8),
-    # *workspaces(),
-    widget.WindowName(
-        max_chars=50, format="{name} | ", scroll=True, width=150, parse_text=text_funki
+    # widget.WindowName(
+    #     max_chars=50, format="{name} | ", scroll=True, width=450, parse_text=text_funki
+    # ),
+    spacer(length=50),
+    widget.Visualiser(),
+    widget.Mpris2(
+        width=220,
+        popup_layout=DEFAULT_LAYOUT,
+        scroll=True,
+        scroll_step=2,
+        scroll_interval=0.1,
+        format="{xesam:title}{% if xesam:artist %} - {xesam:artist}{% endif %}"
     ),
-    widget.GlobalMenu(background=colors["background"], padding=5),
     spacer(),
-    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.CPU(
-        **base(bg="background", fg="text"),
-        fontsize=14,
-        format="{load_percent}% ",
-        max_chars=5,
-    ),
-    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.Memory(
-        **base(bg="background", fg="text"),
-        fontsize=14,
-        format="{MemUsed: .0f}{mm} ",
-    ),
-    widget.IWD(show_image=True, show_text=False, **base()),
-    widget.Systray(**base()),
-    widget.UPowerWidget(),
-    widget.KeyboardLayout(configured_keyboards=["us", "latam"], fmt=" {}"),
-    widget.Clock(
+    *workspaces(),
+     widget.Clock(
         **base(),
         format=" %d/%m/%Y  %I:%M %p ",
     ),
-]
-
-secondary_widgets = [
-    widget.LaunchBar(
-        default_icon="/home/krashmello/.config/qtile/assets/logo64x64_sakura_light.png",
-        progs=[("rofy", "rofi -show drun")],
-        padding=5,
-    ),
-    spacer(length=15),
-    *workspaces(),
+    widget.Notify(),
     spacer(),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    widget.CheckUpdates(
+        distro="Fedora",
+        display_format=" {updates} updates",
+        no_update_string=" Up to date",
+        colour_have_updates=colors["focus"],
+        colour_no_updates=colors["active"],
+        update_interval=1800,
+    ),
+    spacer(length=10),
+    widget.Systray(**base()),
+    spacer(length=10),
     widget.CPU(
         **base(bg="background", fg="text"),
         fontsize=14,
         format="{load_percent}% ",
         max_chars=5,
-        **decor_group,
     ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.Memory(
+    spacer(length=5),
+    # icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
+     widget.Memory(
         **base(bg="background", fg="text"),
         fontsize=14,
         format="{MemUsed: .0f}{mm} ",
-        **decor_group,
     ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.Clock(
-        background="#00000000",
+    # widget.ThermalSensor(
+    #     tag_sensor="Package id 0",
+    #     threshold=75,
+    #     foreground_alert=colors["urgent"],
+    #     foreground=colors["text"],
+    #     background=colors["background"],
+    #     fmt=" {}",
+    # ),
+    spacer(length=5),
+    widget.ThermalSensor(),
+    spacer(length=5),
+    widget.Net(
+        format="{down} ↓↑ {up}",
         foreground=colors["text"],
-        fontsize=14,
-        format="%d/%m/%Y ",
-        **decor_group,
+        background=colors["background"],
     ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.Clock(
-        background="#00000000",
-        foreground=colors["text"],
-        format="%I:%M %p ",
-        **decor_group,
-    ),
-    widget.Systray(background="#00000000", foreground=colors["text"]),
+    spacer(length=5),
+    widget.IWD(show_image=True, show_text=False, **base(), padding=5),
+    spacer(length=50)
+    # widget.UPowerWidget(
+    #     border_colour=colors["focus"],
+    #     fill_colour=colors["active"],
+    #     background=colors["background"],
+    #     font="FiraCode NF Bold",
+    # ),
 ]
+
+# secondary_widgets = [
+#     widget.LaunchBar(
+#         default_icon="/home/krashmello/.config/qtile/assets/logo64x64_sakura_light.png",
+#         progs=[("rofy", "rofi -show drun")],
+#         padding=5,
+#     ),
+#     spacer(length=15),
+#     *workspaces(),
+#     spacer(),
+#     icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+#     widget.CPU(
+#         **base(bg="background", fg="text"),
+#         fontsize=14,
+#         format="{load_percent}% ",
+#         max_chars=5,
+#         **decor_group,
+#     ),
+#     icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+#     widget.Memory(
+#         **base(bg="background", fg="text"),
+#         fontsize=14,
+#         format="{MemUsed: .0f}{mm} ",
+#         **decor_group,
+#     ),
+#     icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+#     widget.Clock(
+#         background="#00000000",
+#         foreground=colors["text"],
+#         fontsize=14,
+#         format="%d/%m/%Y ",
+#         **decor_group,
+#     ),
+#     icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+#     widget.Clock(
+#         background="#00000000",
+#         foreground=colors["text"],
+#         format="%I:%M %p ",
+#         **decor_group,
+#     ),
+#     widget.Systray(background="#00000000", foreground=colors["text"]),
+# ]
 
 
 widget_defaults = {

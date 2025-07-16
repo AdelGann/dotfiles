@@ -19,8 +19,8 @@ keys = [
         ([mod], "h", lazy.layout.left()),
         ([mod], "l", lazy.layout.right()),
         # Change window sizes (MonadTall)
-        # ([mod, "shift"], "Right", lazy.layout.grow()),
-        # ([mod, "shift"], "Left", lazy.layout.shrink()),
+        ([mod, "shift"], "Left", lazy.layout.grow()),
+        ([mod, "shift"], "Right", lazy.layout.shrink()),
         # ([mod, "shift"], "l", lazy.layout.grow()),
         # ([mod, "shift"], "h", lazy.layout.shrink()),
         # Toggle floating
@@ -36,7 +36,7 @@ keys = [
         ([mod], "Tab", lazy.next_layout()),
         ([mod, "shift"], "Tab", lazy.prev_layout()),
         # Kill window
-        ([mod], "w", lazy.window.kill()),
+        ([mod], "q", lazy.window.kill()),
         # Switch focus of monitors
         ([mod], "period", lazy.next_screen()),
         ([mod], "comma", lazy.prev_screen()),
@@ -47,11 +47,11 @@ keys = [
         # lock screen
         # ([mod], "l", lazy.spawn("archlinux-logout")),
         # Menu
-        ([mod], "space", lazy.spawn("rofi -show drun")),
+        ([mod], "d", lazy.spawn("rofi -show drun")),
         # Window Nav
-        ([mod, "shift"], "space", lazy.spawn("rofi -show window")),
+        ([mod, "shift"], "d", lazy.spawn("rofi -show window")),
         # Browsers
-        ([mod], "b", lazy.spawn("firefox")),
+        ([mod], "b", lazy.spawn("zen")),
         # ([mod, "shift"], "b", lazy.window.bring_to_front()),
         ([mod, "shift"], "b", lazy.spawn("qutebrowser")),
         # text editor
