@@ -41,3 +41,47 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 alias cl='clear; fastfetch'
+
+#  ┌─┐┬  ┬┌─┐┌─┐
+#  ├─┤│  │├─┤└─┐
+#  ┴ ┴┴─┘┴┴ ┴└─┘
+
+alias ga="git add"
+alias gc="git commit"
+alias gs="git status"
+alias glg="git log --graph"
+
+if command -v lazygit >/dev/null 2>&1; then
+alias lg="lazygit"
+fi
+
+if command -v zellij >/dev/null 2>&1; then
+alias zs="zellij attach"
+alias z="zellij"
+fi
+
+### DNF CONFIG ALIAS
+if command -v dnf >/dev/null 2>&1; then
+## Aliases
+
+local dnfprog="dnf"
+
+# Prefer dnf5 if installed
+command -v dnf5 > /dev/null && dnfprog=dnf5
+
+alias dnfl="${dnfprog} list"                       # List packages
+alias dnfli="${dnfprog} list installed"            # List installed packages
+alias dnfgl="${dnfprog} grouplist"                 # List package groups
+alias dnfmc="${dnfprog} makecache"                 # Generate metadata cache
+alias dnfp="${dnfprog} info"                       # Show package information
+alias dnfs="${dnfprog} search"                     # Search package
+
+alias dnfu="sudo ${dnfprog} upgrade"               # Upgrade package
+alias dnfi="sudo ${dnfprog} install"               # Install package
+alias dnfgi="sudo ${dnfprog} groupinstall"         # Install package group
+alias dnfr="sudo ${dnfprog} remove"                # Remove package
+alias dnfgr="sudo ${dnfprog} groupremove"          # Remove package group
+alias dnfc="sudo ${dnfprog} clean all"             # Clean cache
+
+
+fi
