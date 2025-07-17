@@ -51,14 +51,12 @@ keys = [
         # Window Nav
         ([mod, "shift"], "d", lazy.spawn("rofi -show window")),
         # Browsers
-        ([mod], "b", lazy.spawn("zen")),
-        # ([mod, "shift"], "b", lazy.window.bring_to_front()),
-        ([mod, "shift"], "b", lazy.spawn("qutebrowser")),
+        ([mod], "b", lazy.spawn("/home/adelg/.local/share/zen/zen")),
+        ([mod, "shift"], "b", lazy.spawn("firefox")),
         # text editor
-        ([mod], "c", lazy.spawn("Code")),
-        # ([mod, "shift"], "c", lazy.spawn("subl")),
+        ([mod], "c", lazy.spawn("/opt/cursor.AppImage")),
         # File Explorer
-        # ([mod], "e", lazy.spawn("Thunar")),
+        ([mod, "shift"], "e", lazy.spawn("nautilus")),
         # Terminal
         ([mod], "return", lazy.spawn("kitty")),
         # Redshift
