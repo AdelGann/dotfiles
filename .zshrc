@@ -51,6 +51,20 @@ alias gc="git commit"
 alias gs="git status"
 alias glg="git log --graph"
 
+#CURSOR
+code() {
+  local cursor="/opt/cursor.AppImage"
+  if [ ! -x "$cursor" ]; then
+    echo "🚫 Cursor no se encontró en $cursor"
+    return 1
+  fi
+  local expanded_args=()
+  for arg in "$@"; do
+    expanded_args+=("$(realpath -m "$arg")")
+  done
+  nohup "$cursor" "${expanded_args[@]}" >/dev/null 2>&1 &
+}
+
 if command -v lazygit >/dev/null 2>&1; then
 alias lg="lazygit"
 fi
@@ -82,6 +96,5 @@ alias dnfgi="sudo ${dnfprog} groupinstall"         # Install package group
 alias dnfr="sudo ${dnfprog} remove"                # Remove package
 alias dnfgr="sudo ${dnfprog} groupremove"          # Remove package group
 alias dnfc="sudo ${dnfprog} clean all"             # Clean cache
-
 
 fi
