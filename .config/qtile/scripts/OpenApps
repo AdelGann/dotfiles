@@ -8,20 +8,20 @@ case "$1" in
   RiceSelector
   ;;
 --terminal)
-  alacritty
-  ;;
---floating)
-  alacritty --hold --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90
+  kitty
   ;;
 # --floating)
-#   kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
+#   alacritty --hold --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90
 #   ;;
---update)
-  alacritty --hold --class FloaTerm,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e Updates --update-system
+--floating)
+  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
   ;;
---checkupdates)
-  alacritty --hold --class Updating,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=47 -e Updates --print-updates
-  ;;
+# --update)
+#   alacritty --hold --class FloaTerm,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e Updates --update-system
+#   ;;
+# --checkupdates)
+#   alacritty --hold --class Updating,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=47 -e Updates --print-updates
+#   ;;
 # --TfileManager)
 #   alacritty --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e $HOME/.local/bin/yazi
 #   ;;
@@ -29,14 +29,14 @@ case "$1" in
   kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e yazi
   ;;
 --nvim)
-  alacritty -e nvim
+  kitty -e nvim
   ;;
---music)
-  alacritty --class FloaTerm,Alacritty -o window.dimensions.lines=18 window.dimensions.columns=67 -e ncmpcpp
-  ;;
---fetch)
-  alacritty --hold --class FloaTerm,Alacritty -o window.dimensions.lines=26 window.dimensions.columns=40 -e ~/.local/bin/sysfetch
-  ;;
+# --music)
+#   alacritty --class FloaTerm,Alacritty -o window.dimensions.lines=18 window.dimensions.columns=67 -e ncmpcpp
+#   ;;
+# --fetch)
+#   alacritty --hold --class FloaTerm,Alacritty -o window.dimensions.lines=26 window.dimensions.columns=40 -e ~/.local/bin/sysfetch
+#   ;;
 # Apps
 --filemanager)
   thunar
